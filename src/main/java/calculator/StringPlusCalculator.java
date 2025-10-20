@@ -9,9 +9,16 @@ public class StringPlusCalculator {
         this.inputParser = inputParser;
     }
 
-    public double add(String input) {
+    public Double add(String input) {
         List<Double> numbers = inputParser.parse(input);
+        return sum(numbers);
+    }
 
-        return 0; // 임시 값
+    private double sum(List<Double> numbers) {
+        double result = 0.0;
+        for (double v : numbers) {
+            result += v;
+        }
+        return result;
     }
 }

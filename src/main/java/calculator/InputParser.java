@@ -27,11 +27,9 @@ public class InputParser {
 
         List<String> tokens = splitTokens(input, delimiters);
 
-        List<Double> number = toDouble(tokens);
+        List<Double> numbers = toDouble(tokens);
 
-        System.out.println(number);
-
-        return List.of(); // 임시 값
+        return numbers; // 임시 값
     }
 
 
