@@ -88,6 +88,9 @@ public class InputParser {
             if (!Double.isFinite(value)) {
                 throw new IllegalArgumentException("유한하지 않은 숫자" + s);
             }
+            if (value < 0) {
+                throw new IllegalArgumentException("음수를 입력하셨습니다" + s);
+            }
             numbers.add(value);
         }
         return numbers;
