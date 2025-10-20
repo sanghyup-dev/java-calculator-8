@@ -1,8 +1,17 @@
 package calculator;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class InputParser {
+
+    private final Set<Character> delimiterSet = new HashSet<>();
+
+    public InputParser() {
+        delimiterSet.add(',');
+        delimiterSet.add(':');
+    }
 
     public List<Double> parse(String input) {
         if (input == null) {
