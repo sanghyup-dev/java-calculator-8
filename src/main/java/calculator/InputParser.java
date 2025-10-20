@@ -27,6 +27,10 @@ public class InputParser {
 
         List<String> tokens = splitTokens(input, delimiters);
 
+        List<Double> number = toDouble(tokens);
+
+        System.out.println(number);
+
         return List.of(); // 임시 값
     }
 
@@ -64,5 +68,30 @@ public class InputParser {
         }
 
         return tokens;
+    }
+
+    private List<Double> toDouble(List<String> tokens) {
+        List<Double> numbers = new ArrayList<>();
+
+        for (String token : tokens) {
+            if (token == null) {
+                throw new IllegalArgumentException("Null token encountered");
+            }
+            String s = token.trim();
+            if (s.isEmpty()) {
+                continue;
+            }
+            double value;
+            try {
+                value = Double.parseDouble(s);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("올바르지 않은 입력 : " + s, e);
+            }
+            if (!Double.isFinite(value)) {
+                throw new IllegalArgumentException("유한하지 않은 숫자" + s);
+            }
+            numbers.add(value);
+        }
+        return numbers;
     }
 }
